@@ -17,7 +17,6 @@ namespace QuizApp.Repository
         {
             user.Id = _users.Any() ? _users.Max(a => a.Id) + 1 : 1;
             user.HighScore= 0;
-            user.Quizes = new();
             _users.Add(user);
             SaveData();
         }

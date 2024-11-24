@@ -2,25 +2,31 @@
   {
     "Id": 1,
     "Username": "testuser",
-    "HighScore": 0,
-    "Quizes": []
+    "HighScore": 0
   },
   {
     "Id": 2,
     "Username": "bitsadzeLuka",
-    "HighScore": 0,
-    "Quizes": []
+    "HighScore": 0
   },
   {
     "Id": 3,
     "Username": "leomessi",
-    "HighScore": 0,
-    "Quizes": []
+    "HighScore": 0
   },
   {
     "Id": 4,
     "Username": "ronaldo",
-    "HighScore": 0,
-    "Quizes": []
+    "HighScore": 0
+  },
+  {
+    "Id": 5,
+    "Username": "luka",
+    "HighScore": 0
+  },
+  {
+    "Id": 6,
+    "Username": "kvara",
+    "HighScore": 0
   }
 ]

@@ -49,47 +49,47 @@
   {
     "QuizId": 3,
     "OwnerId": 3,
-    "Title": "Balon dor",
+    "Title": "axali satauri",
     "Questions": [
       {
-        "QuestionText": "How many balon dors do I have?",
-        "A": "8",
-        "B": "7",
-        "C": "6",
-        "D": "5",
-        "CorrectVersion": "A"
+        "QuestionText": "que1?",
+        "A": "adf",
+        "B": "dfaga",
+        "C": "fgsd f",
+        "D": "fddgf fg",
+        "CorrectVersion": "a"
       },
       {
-        "QuestionText": "roni?",
-        "A": "1",
-        "B": "2",
-        "C": "3",
-        "D": "5",
-        "CorrectVersion": "B"
+        "QuestionText": "que2?",
+        "A": "dfd fsg",
+        "B": "dfadsf",
+        "C": "sgg54",
+        "D": "fsgert546g",
+        "CorrectVersion": "c"
       },
       {
-        "QuestionText": "isi?",
-        "A": "7",
-        "B": "4",
-        "C": "8",
-        "D": "9",
-        "CorrectVersion": "D"
+        "QuestionText": "que3?",
+        "A": "dsfsdfd",
+        "B": "fvfds",
+        "C": "vsdfv",
+        "D": "fdbdf",
+        "CorrectVersion": "d"
       },
       {
-        "QuestionText": "aman?",
-        "A": "fd",
-        "B": "fdas",
-        "C": "btr",
-        "D": "ki",
-        "CorrectVersion": "D"
+        "QuestionText": "que4?",
+        "A": "dfsf",
+        "B": "dfsfg",
+        "C": "fgfg",
+        "D": "gfdg",
+        "CorrectVersion": "b"
       },
       {
-        "QuestionText": "#5?",
-        "A": "ara",
-        "B": "ara",
-        "C": "ki",
-        "D": "no",
-        "CorrectVersion": "C"
+        "QuestionText": "5?",
+        "A": "dfds",
+        "B": "adsf ffgf",
+        "C": "gfgf",
+        "D": "vvfvfv",
+        "CorrectVersion": "c"
       }
     ]
   }

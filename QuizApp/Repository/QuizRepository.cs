@@ -1,4 +1,5 @@
 ﻿using QuizApp.Models;
+using System.Security.Principal;
 using System.Text.Json;
 
 namespace QuizApp.Repository
@@ -33,6 +34,31 @@ namespace QuizApp.Repository
             List<Quiz> UserQuizes = _quizes.Where(a => a.OwnerId != UserId).ToList();
             return UserQuizes;
 
+        }
+
+        public void DeleteQuiz(int QuizIdToDelete)
+        {
+            var quiz = _quizes.FirstOrDefault(a => a.QuizId == QuizIdToDelete);
+            if (quiz != null)
+            {
+                _quizes.Remove(quiz);
+                SaveData();
+            }
+
+        }
+        public void UpdateQuiz(Quiz quiz)
+        {
+            var index = _quizes.FindIndex(a => a.QuizId == quiz.QuizId);
+            if (index >= 0)
+            {
+                _quizes[index] = quiz;
+                SaveData();
+            }
+        }
+
+        public Quiz GetQuizById(int QuizId)
+        {
+            return _quizes.FirstOrDefault(a => a.QuizId == QuizId);
         }
 
 
