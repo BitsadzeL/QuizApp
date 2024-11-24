@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Username": "testuser",
+    "HighScore": 0,
+    "Quizes": []
+  },
+  {
+    "Id": 2,
+    "Username": "bitsadzeLuka",
+    "HighScore": 0,
+    "Quizes": []
+  },
+  {
+    "Id": 3,
+    "Username": "leomessi",
+    "HighScore": 0,
+    "Quizes": []
+  },
+  {
+    "Id": 4,
+    "Username": "ronaldo",
+    "HighScore": 0,
+    "Quizes": []
+  }
+]
