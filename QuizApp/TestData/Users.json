@@ -12,7 +12,7 @@
   {
     "Id": 3,
     "Username": "leomessi",
-    "HighScore": 0
+    "HighScore": 100
   },
   {
     "Id": 4,
@@ -52,6 +52,11 @@
   {
     "Id": 11,
     "Username": "niko",
+    "HighScore": 0
+  },
+  {
+    "Id": 12,
+    "Username": "mamarda",
     "HighScore": 0
   }
 ]

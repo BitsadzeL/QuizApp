@@ -1,6 +1,5 @@
 ﻿using QuizApp.Models;
 using QuizApp.Repository;
-using System.Runtime.CompilerServices;
 
 namespace Executable
 {
@@ -12,7 +11,7 @@ namespace Executable
             string QuizsFilePath = @"../../../../QuizApp/TestData/Quizs.json";
             UserRepository userRepository = new UserRepository(UsersFilePath);
             QuizRepository quizRepository = new QuizRepository(QuizsFilePath);
-
+            int answer=-1;
 
             userRepository.ShowTop10();
 
@@ -21,32 +20,53 @@ namespace Executable
             Console.WriteLine("2) Login");
             Console.WriteLine("3) Exit");
             Console.Write("Enter number: ");
-            byte answer=Byte.Parse(Console.ReadLine());
+            try
+            {
+                answer=Byte.Parse(Console.ReadLine());
+                
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
             int UserId = 0;
 
             if (answer == 1)
             {
-                Console.Write("Enter your username: ");
-                string username = Console.ReadLine().Trim();
-                if (userRepository.IsUsernameAvailable(username) == 1)
+                string username = "";
+
+                while (string.IsNullOrEmpty(username))
                 {
-                    User UserToRegister = new User()
+                    Console.Write("Enter your username: ");
+                    username = Console.ReadLine()?.Trim();
+
+                    if (string.IsNullOrEmpty(username))
                     {
-                        Username = username
-                    };
-
-                    userRepository.Register(UserToRegister);
-
+                        Console.WriteLine("Username must not be empty. Please try again.");
+                    }
                 }
-                else
+
+                while (userRepository.IsUsernameAvailable(username) == 0)
                 {
-                    Console.Write("Sorry! This username is busy, try another one: ");
+
+                    Console.WriteLine("Sorry! This username is busy, try another one. Enter new username:");
+                    username= Console.ReadLine()?.Trim();
+  
                 }
+
+                User userToRegister = new User
+                {
+                            Username = username
+                };
+
+                userRepository.Register(userToRegister);
+                Console.WriteLine("Registration successful!");
+                    
             }
 
 
-             
-            else if(answer == 2) 
+
+
+            else if (answer == 2) 
             {
                 Console.Write("Enter your username: ");
                 string username = Console.ReadLine().Trim();
@@ -58,9 +78,11 @@ namespace Executable
                 Console.WriteLine("2) Update quiz");
                 Console.WriteLine("3) Delete quiz");
                 Console.WriteLine("4) Solve quizes");
+                Console.WriteLine("5) See your quizes");
                 Console.Write("Enter operation: ");
                 byte userChoice=Byte.Parse(Console.ReadLine());
                 Console.WriteLine();
+                //Create quiz
                 if (userChoice == 1) 
                 {
                     List<Question> Questions = new List<Question>();
@@ -122,11 +144,13 @@ namespace Executable
 
                 }
 
+
+                //Update quiz
                 else if(userChoice == 2)
                 {
                     Console.WriteLine("Here are list of your quizes");
                     List<Quiz> currentUserQuizes=quizRepository.GetUsersQuizes(UserId);
-                    List<Question> UpdatedQuestions = new List<Question>();
+                    //List<Question> UpdatedQuestions = new List<Question>();
                     foreach (var item in currentUserQuizes)
                     {
                         Console.WriteLine($"id: {item.QuizId}, title:{item.Title}");
@@ -134,60 +158,89 @@ namespace Executable
 
                     Console.Write("Enter id of the quiz you want to update:");
                     Console.WriteLine();
-                    int QuizToUpdate=int.Parse(Console.ReadLine());
+                    int IndexOfQuizToUpdate=int.Parse(Console.ReadLine());
 
-                    Quiz currentQuiz=quizRepository.GetQuizById(QuizToUpdate);
-                    //Console.WriteLine(currentQuiz.Title);
-                    Console.Write("Enter new title for this quiz: ");
-                    string newTitle=Console.ReadLine();
+                    Quiz CurrentQuiz=quizRepository.GetQuizById(IndexOfQuizToUpdate);
+                    List<Question> CurrentQuestions=quizRepository.GetQuestionsOfQuiz(IndexOfQuizToUpdate);
+                    List<Question> UpdatedQuestions =new List<Question>();
 
-                    for (int i = 0; i < 5; i++)
+
+                    Console.Write($"This is title of quiz: {CurrentQuiz.Title} \n");
+                    Console.Write("Do you want to change title? type 1(for yes) or 0(for no): ");
+                    int AnswerToUpdate = int.Parse(Console.ReadLine());
+
+
+                    if(AnswerToUpdate == 1)
                     {
-                        Console.Write($"Enter question #{i + 1}: ");
-                        string Question = Console.ReadLine();
-
-                        Console.Write("Enter choice A: ");
-                        string FirstChoice = Console.ReadLine();
-
-                        Console.Write("Enter choice B: ");
-                        string SecondChoice = Console.ReadLine();
-
-                        Console.Write("Enter choice C: ");
-                        string ThirdChoice = Console.ReadLine();
-
-                        Console.Write("Enter choice D: ");
-                        string FourthChoice = Console.ReadLine();
-
-                        Console.Write("Enter correct answer: ");
-                        string CorrectAnswer = Console.ReadLine();
-
-
-
-
-                        Question question = new Question()
-                        {
-                            QuestionText = Question,
-                            A = FirstChoice,
-                            B = SecondChoice,
-                            C = ThirdChoice,
-                            D = FourthChoice,
-                            CorrectVersion = Char.Parse(CorrectAnswer)
-
-                        };
-                        UpdatedQuestions.Add(question);
-                        
-
-                        Console.WriteLine();
+                        Console.Write("Enter new title: ");
+                        string NewTitle=Console.ReadLine();
+                        CurrentQuiz.Title = NewTitle;
                     }
 
 
-                    currentQuiz.OwnerId = UserId;
-                    currentQuiz.Title = newTitle;
-                    currentQuiz.Questions = UpdatedQuestions;
-                    quizRepository.UpdateQuiz(currentQuiz);
+                    
+                    foreach(var item in CurrentQuestions)
+                    {
+                        Console.WriteLine(item.QuestionText);
+                        Console.WriteLine($"answers: {item.A} {item.B} {item.C} {item.D}");
+                        Console.Write ("Do you want to change this question? type 1(for yes) or 0(for no): ");
+                        int AnswerToChangeQuestion=int.Parse(Console.ReadLine());
+                        if (AnswerToChangeQuestion == 0)
+                        {
+                            UpdatedQuestions.Add(item);
+                        }
+
+                        else
+                        {
+
+                            Console.Write($"Enter updated question: ");
+                            string Question = Console.ReadLine();
+
+                            Console.Write("Enter choice A: ");
+                            string FirstChoice = Console.ReadLine();
+
+                            Console.Write("Enter choice B: ");
+                            string SecondChoice = Console.ReadLine();
+
+                            Console.Write("Enter choice C: ");
+                            string ThirdChoice = Console.ReadLine();
+
+                            Console.Write("Enter choice D: ");
+                            string FourthChoice = Console.ReadLine();
+
+                            Console.Write("Enter correct answer: ");
+                            string CorrectAnswer = Console.ReadLine();
+
+
+                            Question question = new Question()
+                            {
+                                QuestionText = Question,
+                                A = FirstChoice,
+                                B = SecondChoice,
+                                C = ThirdChoice,
+                                D = FourthChoice,
+                                CorrectVersion = Char.Parse(CorrectAnswer)
+
+                             };
+
+
+                             UpdatedQuestions.Add(question);
+                             Console.WriteLine();
+                            
+
+                        }
+
+
+                    }
+                    
+                    
+                    CurrentQuiz.Questions = UpdatedQuestions;
+                    quizRepository.UpdateQuiz(CurrentQuiz);
+
+
                 }
 
-                
+                //Delete quiz
                 else if(userChoice == 3)
                 {
                     Console.WriteLine("Here are your quizes!");
@@ -212,7 +265,7 @@ namespace Executable
 
                 }
 
-
+                //Solve quizes
                 else if (userChoice == 4)
                 {
                     int points = 0;
@@ -221,7 +274,7 @@ namespace Executable
                     var OthersQuizes = quizRepository.GetOtherUsersQuizes(UserId);
                     foreach (var item in OthersQuizes)
                     {
-                        Console.WriteLine($"Owner: {item.OwnerId}, Quiz title:{item.Title}, Quiz ID:{item.QuizId}");
+                        Console.WriteLine($"Quiz ID:{item.QuizId}, Quiz title:{item.Title}");
                     }
                     Console.Write("Enter quiz id to solve: ");
                     int QuizIdToSolve = int.Parse(Console.ReadLine());
@@ -264,6 +317,19 @@ namespace Executable
                     if (points > userRepository.GetHighScore(UserId))
                     {
                         userRepository.UpdateHighScore(UserId, points);
+                    }
+                }
+
+
+
+                //see own quizes
+                else if(userChoice == 5)
+                {
+                    var currentQuizes=quizRepository.GetUsersQuizes(UserId);
+                    foreach (var item in currentQuizes)
+                    {
+                        Console.WriteLine(item.Title);
+                        
                     }
                 }
 

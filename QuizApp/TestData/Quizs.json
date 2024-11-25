@@ -2,94 +2,47 @@
   {
     "QuizId": 2,
     "OwnerId": 1,
-    "Title": "Geography quiz",
+    "Title": "Capital cities quiz",
     "Questions": [
       {
-        "QuestionText": "What is capital of Georgia?",
-        "A": "1",
-        "B": "2",
-        "C": "3",
-        "D": "4",
-        "CorrectVersion": "D"
-      },
-      {
-        "QuestionText": "Am I??????",
-        "A": "4",
-        "B": "5",
-        "C": "6",
-        "D": "7",
-        "CorrectVersion": "A"
-      },
-      {
-        "QuestionText": "ki?",
-        "A": "10",
-        "B": "11",
-        "C": "12",
-        "D": "13",
-        "CorrectVersion": "C"
-      },
-      {
-        "QuestionText": "ara???",
-        "A": "01",
-        "B": "02",
-        "C": "03",
-        "D": "04",
-        "CorrectVersion": "D"
-      },
-      {
-        "QuestionText": "rao iman?",
-        "A": "789",
-        "B": "654",
-        "C": "154",
-        "D": "325",
-        "CorrectVersion": "B"
-      }
-    ]
-  },
-  {
-    "QuizId": 3,
-    "OwnerId": 3,
-    "Title": "axali satauri",
-    "Questions": [
-      {
-        "QuestionText": "que1?",
-        "A": "adf",
-        "B": "dfaga",
-        "C": "fgsd f",
-        "D": "fddgf fg",
-        "CorrectVersion": "a"
-      },
-      {
-        "QuestionText": "que2?",
-        "A": "dfd fsg",
-        "B": "dfadsf",
-        "C": "sgg54",
-        "D": "fsgert546g",
-        "CorrectVersion": "c"
-      },
-      {
-        "QuestionText": "que3?",
-        "A": "dsfsdfd",
-        "B": "fvfds",
-        "C": "vsdfv",
-        "D": "fdbdf",
-        "CorrectVersion": "d"
-      },
-      {
-        "QuestionText": "que4?",
-        "A": "dfsf",
-        "B": "dfsfg",
-        "C": "fgfg",
-        "D": "gfdg",
+        "QuestionText": "What is the capital city of Georgia?",
+        "A": "Chiatura",
+        "B": "Tbilisi",
+        "C": "Barcelona",
+        "D": "Batumi",
         "CorrectVersion": "b"
       },
       {
-        "QuestionText": "5?",
-        "A": "dfds",
-        "B": "adsf ffgf",
-        "C": "gfgf",
-        "D": "vvfvfv",
+        "QuestionText": "What is the capital city of Japan?",
+        "A": "Tokyo",
+        "B": "Hirosima",
+        "C": "osaka",
+        "D": "kyoto",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "What is the capital city of Spain?",
+        "A": "Barcelona",
+        "B": "Madrid",
+        "C": "Sevilla",
+        "D": "Malaga",
+        "CorrectVersion": "b"
+      },
+      {
+        "QuestionText": "What is the capital of Canada?",
+        "A": "Toronto",
+        "B": "Vancouver",
+        "C": "Ottawa",
+        "D": "Victoria",
         "CorrectVersion": "c"
+      },
+      {
+        "QuestionText": "What is the capital city of France?",
+        "A": "Lyon",
+        "B": "Paris",
+        "C": "Marsellie",
+        "D": "Strasbourg",
+        "CorrectVersion": "b"
       }
     ]
   },
@@ -184,6 +137,53 @@
         "C": "FC Barcelona",
         "D": "Juventus",
         "CorrectVersion": "C"
+      }
+    ]
+  },
+  {
+    "QuizId": 7,
+    "OwnerId": 11,
+    "Title": "general quiz",
+    "Questions": [
+      {
+        "QuestionText": "what is H2O?",
+        "A": "water",
+        "B": "iron",
+        "C": "gold",
+        "D": "calcium",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "how many  meters is penalty taken from?",
+        "A": "8",
+        "B": "11",
+        "C": "9.5",
+        "D": "8",
+        "CorrectVersion": "b"
+      },
+      {
+        "QuestionText": "what does cpu stand for?",
+        "A": "central processing unit",
+        "B": "central pasting unit",
+        "C": "central police unisoft",
+        "D": "meravi",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "how many letters are in English aplhabet?",
+        "A": "28",
+        "B": "27",
+        "C": "26",
+        "D": "25",
+        "CorrectVersion": "c"
+      },
+      {
+        "QuestionText": "what is capital of Georgia?",
+        "A": "Batumi",
+        "B": "Tbilisi",
+        "C": "Chiatura",
+        "D": "QUtaisi",
+        "CorrectVersion": "b"
       }
     ]
   }
