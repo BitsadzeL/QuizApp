@@ -60,6 +60,11 @@ namespace QuizApp.Repository
         {
             return _quizes.FirstOrDefault(a => a.QuizId == QuizId);
         }
+        
+        public List<Question> GetQuestionsOfQuiz(int QuizId)
+        {
+            return _quizes.FirstOrDefault(a => a.QuizId == QuizId).Questions.ToList();
+        }
 
 
 

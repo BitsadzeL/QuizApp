@@ -31,6 +31,19 @@ namespace QuizApp.Repository
             return 0;
         }
 
+        public void UpdateHighScore(int userId, int highScore) 
+        {
+            User user=_users.Find(a => a.Id==userId);
+            user.HighScore=highScore;
+            SaveData();            
+        }
+
+        public int GetHighScore(int userId)
+        {
+            User user = _users.Find(a => a.Id == userId);
+            return user.HighScore;
+        }
+
         public int IsUsernameAvailable(string username)
         {
             List<string> usernames = _users.Select(a => a.Username).ToList();

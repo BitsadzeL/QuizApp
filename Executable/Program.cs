@@ -1,5 +1,6 @@
 ﻿using QuizApp.Models;
 using QuizApp.Repository;
+using System.Runtime.CompilerServices;
 
 namespace Executable
 {
@@ -12,31 +13,6 @@ namespace Executable
             UserRepository userRepository = new UserRepository(UsersFilePath);
             QuizRepository quizRepository = new QuizRepository(QuizsFilePath);
 
-            //User user1 = new User()
-            //{
-            //    Username = "testuser"
-            //};
-
-            //User user2 = new User()
-            //{
-            //    Username = "bitsadzeLuka"
-            //};
-
-            //User user3 = new User()
-            //{
-            //    Username = "leomessi"
-            //};
-
-            //User DoesNotExists = new User()
-            //{
-            //    Username = "chemiuseri"
-            //};
-
-            //userRepository.Register(newUser3);
-
-            //int userid = default(int);
-            //userid = userRepository.Login(DoesNotExists);
-            //Console.WriteLine(userid);
 
             Console.WriteLine("Which operation you want to complete?");
             Console.WriteLine("1) Register");
@@ -67,7 +43,7 @@ namespace Executable
             }
 
 
-            //tu davlogindi shemilia update, create, delete, solve
+             
             else if(answer == 2) 
             {
                 Console.Write("Enter your username: ");
@@ -151,6 +127,7 @@ namespace Executable
                     {
                         Console.WriteLine($"id: {item.QuizId}, title:{item.Title}");
                     }
+
                     Console.Write("Enter id of the quiz you want to update:");
                     Console.WriteLine();
                     int QuizToUpdate=int.Parse(Console.ReadLine());
@@ -234,14 +211,51 @@ namespace Executable
 
                 else if(userChoice == 4)
                 {
-                    Console.Write("You can choose any quiz you want and solve it. enter quiz ID:");
+                    int points = 0;
+                    Console.Write("You can choose any quiz you want and solve it.");
                     Console.WriteLine();
                     var OthersQuizes=quizRepository.GetOtherUsersQuizes(UserId);
                     foreach (var item in OthersQuizes)                       
                     {
-                        Console.WriteLine($"Owner: {item.OwnerId}, Quiz title:{item.Title}");
+                        Console.WriteLine($"Owner: {item.OwnerId}, Quiz title:{item.Title}, Quiz ID:{item.QuizId}");
                         
                     }
+                    Console.Write("Enter quiz id to solve: ");
+                    int QuizIdToSolve=int.Parse(Console.ReadLine());
+
+                    Quiz CurrentQuiz=quizRepository.GetQuizById(QuizIdToSolve);
+                    List<Question> CurrentQuesions=quizRepository.GetQuestionsOfQuiz(QuizIdToSolve);
+                    foreach (var item in CurrentQuesions)
+                    {
+                        Console.WriteLine(item.QuestionText);
+                        Console.WriteLine($"A {item.A}");
+                        Console.WriteLine($"B {item.B}");
+                        Console.WriteLine($"C {item.C}");
+                        Console.WriteLine($"D {item.D}");
+
+                        Console.Write("Enter answer: ");
+                        char input = char.Parse(Console.ReadLine());
+
+                        if (input.ToString().ToLower() == item.CorrectVersion.ToString().ToLower()) 
+                        {
+                            points += 20;
+                        }
+                        else
+                        {
+                            points -= 20;
+                        }
+                        Console.WriteLine();
+
+
+
+                    }
+                    Console.WriteLine($"You collected {points} points");
+
+                    if (points > userRepository.GetHighScore(UserId))
+                    {
+                        userRepository.UpdateHighScore(UserId, points);
+                    }
+
                 }
 
 
