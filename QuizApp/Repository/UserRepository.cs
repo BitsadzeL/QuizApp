@@ -21,6 +21,22 @@ namespace QuizApp.Repository
             SaveData();
         }
 
+        public void ShowTop10()
+        {
+            Console.WriteLine("Here is top 10 users of our application");
+            var top10 = _users.OrderByDescending(user => user.HighScore).Take(10).ToList();
+
+            int index =1;
+
+            foreach (var user in top10) 
+            {
+                Console.WriteLine($" #{index}-{user.Username}, highscore:{user.HighScore}");
+                index++;
+            }
+            Console.WriteLine();
+        }
+
+
         public int Login(User user)
         {
             var index = _users.FindIndex(a => a.Username == user.Username);

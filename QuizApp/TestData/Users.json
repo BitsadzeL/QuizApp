@@ -2,12 +2,12 @@
   {
     "Id": 1,
     "Username": "testuser",
-    "HighScore": 0
+    "HighScore": 60
   },
   {
     "Id": 2,
     "Username": "bitsadzeLuka",
-    "HighScore": 0
+    "HighScore": 20
   },
   {
     "Id": 3,
@@ -22,11 +22,36 @@
   {
     "Id": 5,
     "Username": "luka",
-    "HighScore": 0
+    "HighScore": 100
   },
   {
     "Id": 6,
     "Username": "kvara",
+    "HighScore": 100
+  },
+  {
+    "Id": 7,
+    "Username": "willy",
+    "HighScore": 100
+  },
+  {
+    "Id": 8,
+    "Username": "hacker",
+    "HighScore": 0
+  },
+  {
+    "Id": 9,
+    "Username": "chakve",
+    "HighScore": 0
+  },
+  {
+    "Id": 10,
+    "Username": "lamine yamal",
+    "HighScore": 20
+  },
+  {
+    "Id": 11,
+    "Username": "niko",
     "HighScore": 0
   }
 ]

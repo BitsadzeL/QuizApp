@@ -94,53 +94,6 @@
     ]
   },
   {
-    "QuizId": 4,
-    "OwnerId": 3,
-    "Title": "my quiz 2",
-    "Questions": [
-      {
-        "QuestionText": "question?",
-        "A": "is",
-        "B": "es",
-        "C": "es",
-        "D": "igi",
-        "CorrectVersion": "d"
-      },
-      {
-        "QuestionText": "auf!?",
-        "A": "dcc",
-        "B": "cdd",
-        "C": "atgc",
-        "D": "cdrf",
-        "CorrectVersion": "d"
-      },
-      {
-        "QuestionText": "is movida?",
-        "A": "ara",
-        "B": "ki",
-        "C": "diax",
-        "D": "uechveli",
-        "CorrectVersion": "a"
-      },
-      {
-        "QuestionText": "nagds baxrob?",
-        "A": "erti",
-        "B": "ori",
-        "C": "sami",
-        "D": "otxi",
-        "CorrectVersion": "c"
-      },
-      {
-        "QuestionText": "araaa shansi araa?",
-        "A": "araa",
-        "B": "shansi",
-        "C": "araa",
-        "D": ".",
-        "CorrectVersion": "d"
-      }
-    ]
-  },
-  {
     "QuizId": 5,
     "OwnerId": 6,
     "Title": "math quiz",
@@ -184,6 +137,53 @@
         "C": "105",
         "D": "2",
         "CorrectVersion": "B"
+      }
+    ]
+  },
+  {
+    "QuizId": 6,
+    "OwnerId": 11,
+    "Title": "football quiz",
+    "Questions": [
+      {
+        "QuestionText": "how many ballin dors does Messi have?",
+        "A": "8",
+        "B": "7",
+        "C": "2",
+        "D": "5",
+        "CorrectVersion": "A"
+      },
+      {
+        "QuestionText": "who won 2022 world cup?",
+        "A": "France",
+        "B": "Portugal",
+        "C": "Argentina",
+        "D": "Moroco",
+        "CorrectVersion": "C"
+      },
+      {
+        "QuestionText": "when was the first World Cup?",
+        "A": "1910",
+        "B": "1944",
+        "C": "1932",
+        "D": "1930",
+        "CorrectVersion": "D"
+      },
+      {
+        "QuestionText": "Which Georgian was the top-scorer of Euro2024?",
+        "A": "Khvicha Kvaratskhelia",
+        "B": "Georges Mikautadze",
+        "C": "Budu Zivzivadze",
+        "D": "Giorgi Chakveradze",
+        "CorrectVersion": "B"
+      },
+      {
+        "QuestionText": "Who won Champions Leagus in 2015?",
+        "A": "Atletico Madrid",
+        "B": "Real Madrid",
+        "C": "FC Barcelona",
+        "D": "Juventus",
+        "CorrectVersion": "C"
       }
     ]
   }
