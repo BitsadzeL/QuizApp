@@ -55,7 +55,7 @@ namespace Executable
 
                 User userToRegister = new User
                 {
-                            Username = username
+                    Username = username
                 };
 
                 userRepository.Register(userToRegister);
@@ -158,12 +158,16 @@ namespace Executable
 
                     Console.Write("Enter id of the quiz you want to update:");
                     Console.WriteLine();
-                    int IndexOfQuizToUpdate=int.Parse(Console.ReadLine());
+                    int QuizToUpdate=int.Parse(Console.ReadLine());
 
-                    Quiz CurrentQuiz=quizRepository.GetQuizById(IndexOfQuizToUpdate);
-                    List<Question> CurrentQuestions=quizRepository.GetQuestionsOfQuiz(IndexOfQuizToUpdate);
-                    List<Question> UpdatedQuestions =new List<Question>();
+                    Quiz CurrentQuiz=quizRepository.GetQuizById(QuizToUpdate);
+                    List<Question> CurrentQuestions=quizRepository.GetQuestionsOfQuiz(QuizToUpdate);
 
+                    //aqedan viwyeb gadaketebas
+                    Quiz UpdatedQuiz = new Quiz();
+                    List<Question> UpdatedQuestions = quizRepository.GetQuestionsOfQuiz(QuizToUpdate);
+                    UpdatedQuiz.OwnerId= CurrentQuiz.OwnerId;
+                    UpdatedQuiz.QuizId= CurrentQuiz.QuizId;
 
                     Console.Write($"This is title of quiz: {CurrentQuiz.Title} \n");
                     Console.Write("Do you want to change title? type 1(for yes) or 0(for no): ");
@@ -181,9 +185,9 @@ namespace Executable
                     
                     foreach(var item in CurrentQuestions)
                     {
+                        Console.WriteLine("Do you want to change this question?");
                         Console.WriteLine(item.QuestionText);
                         Console.WriteLine($"answers: {item.A} {item.B} {item.C} {item.D}");
-                        Console.Write ("Do you want to change this question? type 1(for yes) or 0(for no): ");
                         int AnswerToChangeQuestion=int.Parse(Console.ReadLine());
                         if (AnswerToChangeQuestion == 0)
                         {
@@ -220,24 +224,23 @@ namespace Executable
                                 C = ThirdChoice,
                                 D = FourthChoice,
                                 CorrectVersion = Char.Parse(CorrectAnswer)
+                            };
+                           UpdatedQuestions.Add(question);
 
-                             };
-
-
-                             UpdatedQuestions.Add(question);
-                             Console.WriteLine();
+                           Console.WriteLine();
                             
+
 
                         }
 
 
                     }
-                    
+                    CurrentQuiz.OwnerId = UserId;
                     
                     CurrentQuiz.Questions = UpdatedQuestions;
                     quizRepository.UpdateQuiz(CurrentQuiz);
 
-
+ 
                 }
 
                 //Delete quiz
@@ -274,7 +277,7 @@ namespace Executable
                     var OthersQuizes = quizRepository.GetOtherUsersQuizes(UserId);
                     foreach (var item in OthersQuizes)
                     {
-                        Console.WriteLine($"Quiz ID:{item.QuizId}, Quiz title:{item.Title}");
+                        Console.WriteLine($"Owner: {item.OwnerId}, Quiz title:{item.Title}, Quiz ID:{item.QuizId}");
                     }
                     Console.Write("Enter quiz id to solve: ");
                     int QuizIdToSolve = int.Parse(Console.ReadLine());
@@ -333,15 +336,7 @@ namespace Executable
                     }
                 }
 
-
-
-
-
             }
-
-
-
-
 
         }
     }

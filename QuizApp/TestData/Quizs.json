@@ -49,7 +49,7 @@
   {
     "QuizId": 5,
     "OwnerId": 6,
-    "Title": "math quiz",
+    "Title": "Math quiz",
     "Questions": [
       {
         "QuestionText": "5*5=?",
@@ -66,6 +66,46 @@
         "C": "10",
         "D": "11",
         "CorrectVersion": "A"
+      },
+      {
+        "QuestionText": "9*9=?",
+        "A": "72",
+        "B": "81",
+        "C": "36",
+        "D": "0",
+        "CorrectVersion": "B"
+      },
+      {
+        "QuestionText": "56/7=?",
+        "A": "7",
+        "B": "9",
+        "C": "8",
+        "D": "5",
+        "CorrectVersion": "C"
+      },
+      {
+        "QuestionText": "77\u002B33=?",
+        "A": "100",
+        "B": "110",
+        "C": "105",
+        "D": "2",
+        "CorrectVersion": "B"
+      },
+      {
+        "QuestionText": "5*5=?",
+        "A": "40",
+        "B": "35",
+        "C": "15",
+        "D": "25",
+        "CorrectVersion": "D"
+      },
+      {
+        "QuestionText": "5*4=?",
+        "A": "20",
+        "B": "15",
+        "C": "25",
+        "D": "10",
+        "CorrectVersion": "a"
       },
       {
         "QuestionText": "9*9=?",
