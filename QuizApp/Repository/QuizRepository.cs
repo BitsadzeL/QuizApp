@@ -1,5 +1,4 @@
 ﻿using QuizApp.Models;
-using System.Security.Principal;
 using System.Text.Json;
 
 namespace QuizApp.Repository
