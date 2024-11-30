@@ -58,5 +58,20 @@
     "Id": 12,
     "Username": "mamarda",
     "HighScore": 0
+  },
+  {
+    "Id": 13,
+    "Username": "nika",
+    "HighScore": 100
+  },
+  {
+    "Id": 14,
+    "Username": "nika2",
+    "HighScore": 20
+  },
+  {
+    "Id": 15,
+    "Username": "john",
+    "HighScore": 100
   }
 ]

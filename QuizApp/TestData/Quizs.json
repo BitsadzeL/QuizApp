@@ -49,23 +49,15 @@
   {
     "QuizId": 5,
     "OwnerId": 6,
-    "Title": "Math quiz",
+    "Title": "kvaras quiz",
     "Questions": [
       {
-        "QuestionText": "5*5=?",
-        "A": "40",
-        "B": "35",
-        "C": "15",
-        "D": "25",
-        "CorrectVersion": "D"
-      },
-      {
-        "QuestionText": "5\u002B4=?",
-        "A": "9",
-        "B": "6",
-        "C": "10",
-        "D": "11",
-        "CorrectVersion": "A"
+        "QuestionText": "1-1=?",
+        "A": "1",
+        "B": "0",
+        "C": "2",
+        "D": "3",
+        "CorrectVersion": "b"
       },
       {
         "QuestionText": "9*9=?",
@@ -76,12 +68,12 @@
         "CorrectVersion": "B"
       },
       {
-        "QuestionText": "56/7=?",
-        "A": "7",
+        "QuestionText": "49/7=?",
+        "A": "8",
         "B": "9",
-        "C": "8",
-        "D": "5",
-        "CorrectVersion": "C"
+        "C": "7",
+        "D": "6",
+        "CorrectVersion": "c"
       },
       {
         "QuestionText": "77\u002B33=?",
@@ -92,44 +84,12 @@
         "CorrectVersion": "B"
       },
       {
-        "QuestionText": "5*5=?",
-        "A": "40",
-        "B": "35",
-        "C": "15",
-        "D": "25",
-        "CorrectVersion": "D"
-      },
-      {
-        "QuestionText": "5*4=?",
-        "A": "20",
-        "B": "15",
-        "C": "25",
-        "D": "10",
+        "QuestionText": "5/5=?",
+        "A": "1",
+        "B": "5",
+        "C": "0",
+        "D": "2.5",
         "CorrectVersion": "a"
-      },
-      {
-        "QuestionText": "9*9=?",
-        "A": "72",
-        "B": "81",
-        "C": "36",
-        "D": "0",
-        "CorrectVersion": "B"
-      },
-      {
-        "QuestionText": "56/7=?",
-        "A": "7",
-        "B": "9",
-        "C": "8",
-        "D": "5",
-        "CorrectVersion": "C"
-      },
-      {
-        "QuestionText": "77\u002B33=?",
-        "A": "100",
-        "B": "110",
-        "C": "105",
-        "D": "2",
-        "CorrectVersion": "B"
       }
     ]
   },
@@ -224,6 +184,53 @@
         "C": "Chiatura",
         "D": "QUtaisi",
         "CorrectVersion": "b"
+      }
+    ]
+  },
+  {
+    "QuizId": 8,
+    "OwnerId": 7,
+    "Title": "willy\u0027s quiz",
+    "Questions": [
+      {
+        "QuestionText": "1=1?",
+        "A": "yes",
+        "B": "no",
+        "C": "no",
+        "D": "no",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "is 2=2?",
+        "A": "yes",
+        "B": "no",
+        "C": "0",
+        "D": "nein",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "is 2*2 4?",
+        "A": "no",
+        "B": "yes",
+        "C": "1",
+        "D": "ja",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "is y=y?",
+        "A": "yes",
+        "B": "no",
+        "C": "nein",
+        "D": "0",
+        "CorrectVersion": "a"
+      },
+      {
+        "QuestionText": "e=e?",
+        "A": "yes",
+        "B": "0",
+        "C": "o",
+        "D": "no",
+        "CorrectVersion": "a"
       }
     ]
   }

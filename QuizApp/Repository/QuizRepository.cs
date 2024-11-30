@@ -22,6 +22,29 @@ namespace QuizApp.Repository
 
         }
 
+        public void DeleteQuiz(int ownerId, int QuizIdToDelete)
+        {
+            var quiz = _quizes.FirstOrDefault(a => a.QuizId == QuizIdToDelete);
+            if (quiz.OwnerId != ownerId)
+            {
+                throw new Exception("You do not have permission to delete quiz of other user!");
+            }
+            if (quiz != null)
+            {
+                _quizes.Remove(quiz);
+                SaveData();
+            }
+        }
+        public void UpdateQuiz(Quiz quiz)
+        {
+
+            var index = _quizes.FindIndex(a => a.QuizId == quiz.QuizId);
+            if (index >= 0)
+            {
+                _quizes[index] = quiz;
+                SaveData();
+            }
+        }
         public List<Quiz> GetUsersQuizes(int UserId)
         {
             List<Quiz> UserQuizes = _quizes.Where(a=>a.OwnerId==UserId).ToList();
@@ -36,25 +59,7 @@ namespace QuizApp.Repository
 
         }
 
-        public void DeleteQuiz(int QuizIdToDelete)
-        {
-            var quiz = _quizes.FirstOrDefault(a => a.QuizId == QuizIdToDelete);
-            if (quiz != null)
-            {
-                _quizes.Remove(quiz);
-                SaveData();
-            }
 
-        }
-        public void UpdateQuiz(Quiz quiz)
-        {
-            var index = _quizes.FindIndex(a => a.QuizId == quiz.QuizId);
-            if (index >= 0)
-            {
-                _quizes[index] = quiz;
-                SaveData();
-            }
-        }
 
         public Quiz GetQuizById(int QuizId)
         {
@@ -64,6 +69,28 @@ namespace QuizApp.Repository
         public List<Question> GetQuestionsOfQuiz(int QuizId)
         {
             return _quizes.FirstOrDefault(a => a.QuizId == QuizId).Questions.ToList();
+        }
+
+        public bool IsQuizNameAvailable(string name)
+        {
+            if(name.Length == 0)
+            {
+                throw new Exception("Quiz name must not be empty! Enter name again:");
+            }
+
+            List<string> QuizNames = _quizes.Select(a=>a.Title).ToList();
+
+            foreach (var item in QuizNames)
+            {
+                if (name.Trim().ToLower() == item.Trim().ToLower())
+                {
+                    throw new Exception("this title is busy. Enter new title: ");
+                }
+                
+            }
+
+
+            return true;
         }
 
 

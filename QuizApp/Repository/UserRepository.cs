@@ -60,20 +60,51 @@ namespace QuizApp.Repository
             return user.HighScore;
         }
 
-        public int IsUsernameAvailable(string username)
+        public bool IsUsernameAvailable(string username)
         {
+            if(username.Length == 0)
+            {
+                throw new Exception("Username must not be empty. Enter new one: ");
+            }
+
             List<string> usernames = _users.Select(a => a.Username).ToList();
             foreach (var user in usernames)
             {
                 if (user.Equals(username))
                 {
-                    return 0;
+                    throw new Exception("This username is busy. Enter new username: ");
                 }
             }
 
 
-            return 1;
+            return true;
 
+        }
+
+        public bool IsUserRegistered(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new Exception("Not with empty username. Try again: ");
+            }
+
+            List<string> RegisteredUsernames = _users.Select(user=>user.Username).ToList();
+
+
+            //tu useri daregistrirebulia, daabruebs true
+            foreach (var item in RegisteredUsernames)
+            {
+                if (item.Equals(username)) 
+                {
+                    return true;
+                }
+                
+            }
+
+
+            //tu ar ari daregistrirebuli, daabrunebs false da motxovs ro swori username sheiyvanos
+            throw new Exception("This username is not registered. Enter corrrect one: ");    
+            
         }
 
         private List<User> LoadData()
