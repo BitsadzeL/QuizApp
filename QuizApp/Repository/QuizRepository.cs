@@ -92,6 +92,35 @@ namespace QuizApp.Repository
             return true;
         }
 
+        public bool CanSolveQuiz(int userid, int quizid)
+        {
+            Quiz quiz = GetQuizById(quizid);
+            if (quiz.OwnerId == userid) {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        public bool CanUpdateQuiz(int userid, int quizid)
+        {
+            Quiz quiz = GetQuizById(quizid);
+            if (quiz.OwnerId == userid)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
+
+
+
+
+
 
 
 

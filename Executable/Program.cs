@@ -157,7 +157,9 @@ namespace Executable
                                 string SecondChoice = GetInput("Enter choice B: ");
                                 string ThirdChoice = GetInput("Enter choice C: ");
                                 string FourthChoice = GetInput("Enter choice D: ");
-                                string CorrectAnswer = GetInput("Enter correct variant: ");
+                                string CorrectAnswer = GetCorrectOption("Enter the correct option for the question (a, b, c, d): ");
+
+
 
 
                                 Question question = new Question()
@@ -200,16 +202,34 @@ namespace Executable
                             {
 
                                 int cnt = 1;
-                                Console.WriteLine("Here are list of your quizes");
-                                //List<Question> UpdatedQuestions = new List<Question>();
+                                Console.WriteLine("Here are list of your quizes");                               
                                 foreach (var item in currentUserQuizes)
                                 {
                                     Console.WriteLine($"id: {item.QuizId}, title:{item.Title}");
                                 }
 
-                                Console.Write("Enter id of the quiz you want to update:");
+
+                                int QuizToUpdate = default;
+                                
+
+                                bool CanUpdate = false;
+                                while (CanUpdate == false)
+                                {
+                                    QuizToUpdate = int.Parse(GetInput("Enter quiz id to update: "));
+                                    if (quizRepository.CanUpdateQuiz(UserId, QuizToUpdate) == true)
+                                    {
+                                        CanUpdate = true;
+                                        break;
+                                    }
+
+                                    else
+                                    {
+                                        Console.WriteLine("You can not update other users quiz");
+                                    }
+                                }
+
                                 Console.WriteLine();
-                                int QuizToUpdate = int.Parse(Console.ReadLine());
+                                
 
 
 
@@ -240,8 +260,7 @@ namespace Executable
                                     Console.WriteLine($"This is content of question #{cnt}");
                                     Console.WriteLine($"question:{item.QuestionText}");
                                     Console.WriteLine($"answers: {item.A} {item.B} {item.C} {item.D}");
-                                    //Console.Write("Do you want to change this question?  type 1(for yes) or 0(for no): ");
-                                    //int AnswerToChangeQuestion = int.Parse(Console.ReadLine());
+
 
                                     int AnswerToChangeQuestion = int.Parse(GetInput("Do you want to change this question? type 1(for yes) or 0(for no): "));
                                     if (AnswerToChangeQuestion == 0)
@@ -258,6 +277,8 @@ namespace Executable
                                         string ThirdChoice = GetInput("Enter choice C: ");
                                         string FourthChoice = GetInput("Enter choice D: ");
                                         string CorrectAnswer = GetInput("Enter correct option: ");
+
+
 
 
 
@@ -354,15 +375,36 @@ namespace Executable
                         else if (userChoice == 4)
                         {
                             int points = 0;
-                            Console.Write("You can choose any quiz you want and solve it.");
-                            Console.WriteLine();
+                            Console.Write("You can choose any quiz you want and solve it.\n");
                             var OthersQuizes = quizRepository.GetOtherUsersQuizes(UserId);
+
                             foreach (var item in OthersQuizes)
                             {
                                 Console.WriteLine($" Quiz ID:{item.QuizId}, Quiz title:{item.Title}");
                             }
 
-                            int QuizIdToSolve = int.Parse(GetInput("Enter quiz id to solve: "));
+                            bool CanSolve=false;
+                            int QuizIdToSolve=-1;
+
+                            while(CanSolve == false)
+                            {
+                                QuizIdToSolve = int.Parse(GetInput("Enter quiz id to solve: "));
+                                if(quizRepository.CanSolveQuiz(UserId,QuizIdToSolve) == true) 
+                                {
+                                    CanSolve = true;
+                                    break;
+                                }
+
+                                else
+                                {
+                                    Console.WriteLine("You can not solve your own quiz");
+                                }
+                            }
+
+                            Console.WriteLine();
+                            
+
+
                             byte questionCounter = 1;
 
                             Quiz CurrentQuiz = quizRepository.GetQuizById(QuizIdToSolve);
@@ -370,15 +412,36 @@ namespace Executable
 
 
 
+                            DateTime startTime = DateTime.Now; 
+                            TimeSpan maxDuration = TimeSpan.FromMinutes(2);
+                            bool completed = true;
+
+
+
+                            Console.WriteLine("You have 2 minutes to solve this quiz! Good Luck!");
                             foreach (var item in CurrentQuesions)
                             {
 
+                                if (DateTime.Now - startTime > maxDuration)
+                                {
+                                    points = 0;
+                                    completed = false;
+                                    Console.WriteLine($"\nTime's up! You failed to solve the quiz. Your result: {points} points");
+                                    break; 
+                                }
 
-                                Console.WriteLine($"Question #{questionCounter}-{item.QuestionText}");
+
+                                TimeSpan elapsedTime = DateTime.Now - startTime;                                
+                                TimeSpan remainingTime = maxDuration - elapsedTime;
+
+                                
+                                Console.WriteLine($"Time remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
+                                Console.WriteLine($"Question #{questionCounter}) {item.QuestionText}");
                                 Console.WriteLine($"A {item.A}");
                                 Console.WriteLine($"B {item.B}");
                                 Console.WriteLine($"C {item.C}");
                                 Console.WriteLine($"D {item.D}");
+                                questionCounter++;
 
 
                                 string userInput = GetInput("Enter your choice: ");
@@ -399,10 +462,14 @@ namespace Executable
 
 
 
-                            Console.WriteLine($"Game Over! You collected {points} points!!!");
+                            if (completed)
+                            {
+                                Console.WriteLine($"Game Over! You collected {points} points!!!");
+                            }
 
 
-                            if (points > userRepository.GetHighScore(UserId))
+
+                            if (completed && points > userRepository.GetHighScore(UserId))
                             {
                                 userRepository.UpdateHighScore(UserId, points);
                             }
@@ -443,33 +510,38 @@ namespace Executable
                 {
                     break;
                 }
-
-
-
-
-
-
             }
-
         }
 
-            public static string GetInput(string prompt)
+        public static string GetInput(string prompt)
+        {
+            string input;
+            Console.Write(prompt);
+            input = Console.ReadLine().Trim();
+
+            while (string.IsNullOrEmpty(input))
             {
-                string input;
-                Console.Write(prompt);
+                Console.Write("Input cannot be empty. Please enter again: ");
                 input = Console.ReadLine().Trim();
-
-                while (string.IsNullOrEmpty(input))
-                {
-                    Console.Write("Input cannot be empty. Please enter again: ");
-                    input = Console.ReadLine().Trim();
-                }
-
-                return input;
             }
 
+            return input;
+        }
 
 
-        
+        public static string GetCorrectOption(string prompt)
+        {
+            string[] validOptions = { "a", "b", "c", "d", "A", "B", "C", "D" };
+            string input = GetInput(prompt); 
+
+            while (!Array.Exists(validOptions, option => option.Equals(input, StringComparison.OrdinalIgnoreCase)))
+            {
+                Console.WriteLine("Invalid option. The correct option must be one of: a, b, c, or d.");
+                input = GetInput(prompt); 
+            }
+
+            return input.ToLower(); 
+        }
+
     } 
 }
